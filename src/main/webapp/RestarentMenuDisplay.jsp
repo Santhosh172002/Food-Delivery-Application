@@ -1,0 +1,135 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.foodApp.DTO.RestarentMenu" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Restaurant Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            background-color: #258684;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            color: #e0e0e0;
+        }
+        .menu-container {
+            width: 100%;
+            max-width: 900px;
+            
+        }
+        .menu-item {
+            display: flex;
+            background: #fcfcff;
+            border-radius: 12px;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0px 8px 20px rgba(127, 207, 225, 0.396);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 10px;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 25px rgba(155, 90, 29, 0.5);
+        }
+        .menu-item img {
+            width: 120px;
+            border-radius: 12px;
+        }
+        .menu-content {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            color: #000000;
+        }
+        .menu-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            /* color: #050505; */
+        }
+        .menu-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            /* color: #9e9e9e; */
+        }
+        .menu-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .menu-rating i {
+            color: #FFD700;
+        }
+        .menu-price {
+            font-size: 1em;
+            font-weight: 600;
+            color: #ff6347;
+        }
+        .menu-description {
+            font-size: 0.9em;
+            /* color: #cfcfcf; */
+            margin-top: 8px;
+            max-width : 550px; 
+        }
+        .add-to-cart-button {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            width : 220px;
+            padding : 8px 0;
+            margin-right : 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+        }
+        .add-to-cart-button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Menu Item 1 -->
+        <% ArrayList<RestarentMenu> rml = (ArrayList<RestarentMenu>)session.getAttribute("rmList");
+        	for(RestarentMenu rl : rml){
+        %>    
+        <div class="menu-item">
+            <img src="<%= rl.getImagePath() %>">
+            <div class="menu-content">
+                <div class="menu-title"><% out.println(rl.getItemName()); %></div>
+                <div class="menu-details">
+                    <div class="menu-price"><i class="fa-solid fa-indian-rupee-sign"></i> <% out.println(rl.getItemPrice()); %></div>
+                </div>
+                <p class="menu-description"><% out.println(rl.getIdsc()); %></p>
+                 <!-- Add to Cart Button -->
+                   </div> 
+				<a href="TakeQuantity?mId=<%= rl.getMid() %>">
+				  <button type="submit" class="add-to-cart-button">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                  </button>
+				</a>            
+        </div>
+       <% } %>
+   </div>
+</body>
+</html>

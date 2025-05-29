@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Food Application</display-name>
+  <welcome-file-list>
+    <welcome-file>Home.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>Register_Servlet</servlet-name>
+  	<servlet-class>com.foodApp.Servlets.Register</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Register_Servlet</servlet-name>
+  	<url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>Login_Servlet</servlet-name>
+  	<servlet-class>com.foodApp.Servlets.Login</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Login_Servlet</servlet-name>
+  	<url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+</web-app>
